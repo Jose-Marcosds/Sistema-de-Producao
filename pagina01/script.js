@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const maquinasAtivas = 5;
     const operadores = 8;
 
-    document.getElementById("pedidosPendentes").textContent = pedidosPendentes;
+    document.getElementById("pedidos").textContent = pedidosPendentes;
     document.getElementById("maquinasAtivas").textContent = maquinasAtivas;
     document.getElementById("operadores").textContent = operadores;
 });
