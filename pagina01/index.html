@@ -12,9 +12,49 @@
     </header>
     <main>
         <section id="dashboard">
-            <a href="paginao2/index.html">
-                <div class="card">📦 Pedidos: <span id="pedidos">0</span></div>
-            </a>
+            <div class="card">📦 Pedidos: <span id="pedidos">0</span>
+                <nav>
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#">Clientes</a>
+                            <ul class="dropdown-content">
+                                <li><button id="c1">C1</button></li>
+                                <li><button id="c2">C2</button></li>
+                                <li><button id="c3">C3</button></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detalhes do Pedido</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Pedido</th>
+                        <th>Prontas</th>
+                        <th>Falta</th>
+                    </tr>
+                    <tr>
+                        <td>Produto 1</td>
+                        <td>10</td>
+                        <td>5</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Produto 2</td>
+                        <td>8</td>
+                        <td>3</td>
+                        <td>5</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>  
+
+    </div>
             <div class="card">🛠️ Máquinas Ativas: <span id="maquinasAtivas">0</span></div>
             <div class="card">👷‍♂️ Operadores: <span id="operadores">0</span></div>
         </section>

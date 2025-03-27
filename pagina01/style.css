@@ -27,3 +27,61 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-size: 1.2rem;
 }
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+li {
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: block;
+}
+
+/* Estilo do menu dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+}
+
+/* Faz o menu aparecer quando passa o mouse */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+table { /* Define o estilo da tabela.*/
+    width: 100%; /* Define a largura da tabela.(Fazem a tabela ocupar toda a largura da tela.)*/
+    margin-top: 20px; /* Define a margem superior da tabela.(Adiciona espaçamento superior a partir do topo da tabela.)*/  
+    border-collapse: collapse; /* Define a colapse da borda da tabela.(Faz com que as bordas das celulas sejam unidas.)*/    
+}
+
+table, th, td { /* Define o estilo da tabela, das linhas e das celulas.*/
+    border: 1px solid black; /* Define a borda da tabela.(Adiciona uma borda preta de 1px.)*/
+}
+
+th, td { /* Define o estilo das linhas e das celulas.*/
+    padding: 10px; /* Define o preenchimento das celulas.(Adiciona espaçamento interno nas celulas.)*/
+    text-align: left; /* Alinha o texto a esquerda dentro das celulas.*/
+    background: white; /* Define a cor de fundo das celulas.*/
+}
