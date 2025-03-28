@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>C1</h1>
+        
+    </header>
+    <select id="ordenarpor">
+        <option value="">Ordenar Por...</option>
+        <option value="item">Item</option>
+        <option value="datainicial">Data do Pedido</option>
+        <option value="dataentrega">Data da Entrega</option>
+        <option value="tamanho">Tamanho</option>
+        <option value="prioridade">Prioridade</option>
+    </select>
+    <h2>Pedidos C1</h2>
+    <button id="adicionarPedido">Adicionar Pedido</button>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Novo Pedido</h2>
+            <form id="pedidoForm">
+                <label for="item">Item:</label>
+                <input type="number" id="item" name="item" required>
+                <label for="datainicial">Data do Pedido:</label>
+                <input type="date" id="datainicial" name="datainicial" required>
+                <label for="dataentrega">Data da Entrega:</label>
+                <input type="date" id="dataentrega" name="dataentrega" required>
+                <label for="tamanho">Tamanho:</label>
+                <input type="number" id="tamanho" name="tamanho" required>
+                <label for="prioridade">Prioridade:</label>
+                <input type="number" id="prioridade" name="prioridade">
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+    </div>
+    <table id="pedidosTable">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Data do Pedido</th>
+                <th>Data da Entrega</th>
+                <th>Tamanho</th>
+                <th>Prioridade</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <tbody id="corpo-tabela"></tbody>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
