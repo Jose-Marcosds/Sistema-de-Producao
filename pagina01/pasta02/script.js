@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const novoPedido = {
             item: parseInt(document.getElementById("item").value),
-            datainicial: document.getElementById("datainicial").value,
-            dataentrega: document.getElementById("dataentrega").value,
+            datainicial: formatarData(document.getElementById("datainicial").value),
+            dataentrega: formatarData(document.getElementById("dataentrega").value),
             tamanho: parseInt(document.getElementById("tamanho").value),
             prioridade: parseInt(document.getElementById("prioridade").value) || 0,
         };
@@ -37,6 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
         modal.style.display = "none";
         pedidoForm.reset();
     });
+
+    function formatarData(dataISO) {
+        const [ano, mes, dia] = dataISO.split("-");
+        return `${dia}/${mes}/${ano}`;
+    }
 
     function atualizarTabela() {
         pedidosTable.innerHTML = "";
@@ -58,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (criterio) {
             pedidos.sort((a, b) => {
                 if (criterio === "datainicial" || criterio === "dataentrega") {
-                    return new Date(a[criterio]) - new Date(b[criterio]);
+                    return new Date(a[criterio].split("/").reverse().join("-")) - new Date(b[criterio].split("/").reverse().join("-"));
                 }
                 return a[criterio] - b[criterio];
             });
