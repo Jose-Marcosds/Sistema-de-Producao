@@ -70,18 +70,6 @@ a {
     display: block;
 }
 
-table { /* Define o estilo da tabela.*/
-    width: 100%; /* Define a largura da tabela.(Fazem a tabela ocupar toda a largura da tela.)*/
-    margin-top: 20px; /* Define a margem superior da tabela.(Adiciona espaçamento superior a partir do topo da tabela.)*/  
-    border-collapse: collapse; /* Define a colapse da borda da tabela.(Faz com que as bordas das celulas sejam unidas.)*/    
-}
-
-table, th, td { /* Define o estilo da tabela, das linhas e das celulas.*/
-    border: 1px solid black; /* Define a borda da tabela.(Adiciona uma borda preta de 1px.)*/
-}
-
-th, td { /* Define o estilo das linhas e das celulas.*/
-    padding: 10px; /* Define o preenchimento das celulas.(Adiciona espaçamento interno nas celulas.)*/
-    text-align: left; /* Alinha o texto a esquerda dentro das celulas.*/
-    background: white; /* Define a cor de fundo das celulas.*/
+a:hover {
+    background: steelblue;  /*Muda a cor de fundo do botão para um azul mais escuro quando o mouse passa sobre ele.*/
 }
