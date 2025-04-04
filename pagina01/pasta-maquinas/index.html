@@ -10,5 +10,47 @@
     <header>
         <h1>Máquinas</h1>
     </header>
+    <select id="ordenarpor">
+        <option value="">Ordenar Por...</option>
+        <option value="item">Item</option>
+        <option value="datainicial">Data do Pedido</option>
+        <option value="dataentrega">Data da Entrega</option>
+        <option value="tamanho">Tamanho</option>
+        <option value="prioridade">Prioridade</option>
+    </select>
+    <h2>Máquinas</h2>
+    <button id="adicionar-operacao">Adicionar Operação</button>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Novo Pedido</h2>
+            <form id="pedidoForm">
+                <label for="maquina">Máquina:</label>
+                <input type="string" id="maquina" name="maquina" required>
+                <label for="operacao">Operação:</label>
+                <input type="string" id="operacao" name="operacao" required>
+                <label for="producao">Produção:</label>
+                <input type="number" id="producao" name="producao" required>
+                <label for="status">status:</label>
+                <input type="string" id="status" name="staus" required>
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+    </div>
+    <table id="maquinasTable">
+        <thead>
+            <tr>
+                <th>Máquina</th>
+                <th>Operação</th>
+                <th>Produção</th>
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <tbody id="corpo-tabela"></tbody>
+
+    <script src="script.js"></script>
 </body>
 </html>
