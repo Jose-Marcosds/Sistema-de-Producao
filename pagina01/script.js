@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const pedidosPendentes = 12;
-    const maquinasAtivas = 5;
-    const operadores = 8;
+    const pedidosPendentes = ;
+    const maquinasAtivas = ;
+    const operadores = ;
 
     document.getElementById("pedidos").textContent = pedidosPendentes;
     document.getElementById("maquinasAtivas").textContent = maquinasAtivas;
