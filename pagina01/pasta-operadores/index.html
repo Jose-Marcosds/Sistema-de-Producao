@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Operadores</h1>
+    </header>
+    <select id="ordenarpor">
+        <option value="">Ordenar Por...</option>
+        <option value="r.e">R.E</option>
+        <option value="nome">Nome</option>
+        <option value="turno">Turno</option>
+        <option value="maquinas">Máquinas</option>
+    </select>
+    <h2>Operadores</h2>
+    <button id="adicionar-operador">Adicionar Operador</button>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Novo Operador</h2>
+            <form id="operadorForm">
+                <label for="re">R.E:</label>
+                <input type="string" id="re" name="re" required>
+                <label for="nome">Nome:</label>
+                <input type="string" id="nome" name="nome" required>
+                <label for="turno">Turno:</label>
+                <input type="string" id="turno" name="turno" required>
+                <label for="maquinas">Máquinas:</label>
+                <input type="string" id="maquinas" name="maquinas" required>
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+    </div>
+    <table id="operadoresTable">
+        <thead>
+            <tr>
+                <th>R.E</th>
+                <th>Nome</th>
+                <th>Turno</th>
+                <th>Máquinas</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <tbody id="corpo-tabela"></tbody>
+
+    <script src="script.js"></script>
+</body>
+</html>
