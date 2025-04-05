@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produção</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Produção</h1>
+    </header>
+    <select name="producao" id="producao">
+        <option value="">Ordenar Por...</option>
+        <option value="maquina">Máquina</option>
+        <option value="operacao">Operação</option>
+        <option value="producao">Produção</option>
+        <option value="retrabalho">Retrabalho</option>
+        <option value="refugo">Refugo</option>
+    </select>
+    <h2>Produção</h2>
+    <button id="adicionar-operacao">Adicionar Operação</button> 
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Produção</h2>
+            <form id="producaoForm">
+                <label for="maquina">Máquina:</label>
+                <input type="string" id="maquina" name="maquina" required>
+                <label for="operacao">Operação:</label>
+                <input type="string" id="operacao" name="operacao" required>
+                <label for="producao">Produção:</label>
+                <input type="number" id="producao" name="producao" required>
+                <label for="retrabalho">Retrabalho:</label>
+                <input type="number" id="retrabalho" name="retrabalho" required>
+                <label for="refugo">Refugo:</label>
+                <input type="number" id="refugo" name="refugo" required>
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+    </div>
+    <table id="producaoTable">
+        <thead>
+            <tr>
+                <th>Máquina</th>
+                <th>Operação</th>
+                <th>Produção</th>
+                <th>Retrabalho</th>
+                <th>Refugo</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>    
+    <tbody id="corpo-tabela"></tbody>
+
+    <script src="script.js"></script>   
+</body>
+</html>
