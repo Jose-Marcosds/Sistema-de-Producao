@@ -1,4 +1,4 @@
-// Abrir e fechar o modal
+// Elementos da interface
 const modal = document.getElementById("modal");
 const btnAdicionar = document.getElementById("adicionar-operacao");
 const spanFechar = document.querySelector(".close");
@@ -6,8 +6,8 @@ const form = document.getElementById("pedidoForm");
 const tabela = document.getElementById("maquinasTable").querySelector("tbody");
 const selectOrdenar = document.getElementById("ordenarpor");
 
-// Array para armazenar os dados
-let pedidos = [];
+const storageKey = "maquinas"; // chave no localStorage
+let pedidos = JSON.parse(localStorage.getItem(storageKey)) || [];
 
 // Abrir modal
 btnAdicionar.onclick = () => {
@@ -19,7 +19,6 @@ spanFechar.onclick = () => {
     modal.style.display = "none";
 };
 
-// Fechar modal ao clicar fora do conteúdo
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -35,9 +34,9 @@ form.addEventListener("submit", (e) => {
     const producao = parseInt(document.getElementById("producao").value);
     const status = document.getElementById("status").value;
 
-    const novoPedido = { maquina, operacao, producao, status };
-    pedidos.push(novoPedido);
-
+    const novaMaquina = { maquina, operacao, producao, status };
+    pedidos.push(novaMaquina);
+    salvarLocal();
     form.reset();
     modal.style.display = "none";
     atualizarTabela();
@@ -58,6 +57,11 @@ function atualizarTabela() {
     });
 }
 
+// Salva no localStorage
+function salvarLocal() {
+    localStorage.setItem(storageKey, JSON.stringify(pedidos));
+}
+
 // Ordenar por seleção
 selectOrdenar.addEventListener("change", () => {
     const criterio = selectOrdenar.value;
@@ -73,3 +77,6 @@ selectOrdenar.addEventListener("change", () => {
         atualizarTabela();
     }
 });
+
+// Carregar dados ao iniciar
+atualizarTabela();

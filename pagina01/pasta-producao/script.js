@@ -6,8 +6,8 @@ const form = document.getElementById("producaoForm");
 const tabela = document.getElementById("producaoTable").querySelector("tbody");
 const selectOrdenar = document.getElementById("producao");
 
-// Lista de produções
-let producoes = [];
+const storageKey = "producao";
+let producoes = JSON.parse(localStorage.getItem(storageKey)) || [];
 
 // Abrir modal
 btnAdicionar.onclick = () => {
@@ -39,12 +39,13 @@ form.addEventListener("submit", (e) => {
     const novaProducao = { maquina, operacao, producao, retrabalho, refugo };
     producoes.push(novaProducao);
 
+    salvarLocal();
     form.reset();
     modal.style.display = "none";
     atualizarTabela();
 });
 
-// Atualiza a tabela com os dados atuais
+// Atualiza a tabela
 function atualizarTabela() {
     tabela.innerHTML = "";
     producoes.forEach((item) => {
@@ -58,6 +59,11 @@ function atualizarTabela() {
         `;
         tabela.appendChild(row);
     });
+}
+
+// Salvar no localStorage
+function salvarLocal() {
+    localStorage.setItem(storageKey, JSON.stringify(producoes));
 }
 
 // Ordenar tabela
@@ -75,3 +81,6 @@ selectOrdenar.addEventListener("change", () => {
         atualizarTabela();
     }
 });
+
+// Carregar dados ao iniciar
+atualizarTabela();

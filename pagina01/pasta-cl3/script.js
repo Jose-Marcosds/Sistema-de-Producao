@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const pedidoForm = document.getElementById("pedidoForm");
     const pedidosTable = document.querySelector("#pedidosTable tbody");
     const ordenarSelect = document.getElementById("ordenarpor");
-    let pedidos = [];
+    const storageKey = "pedidos_C3";
+
+    let pedidos = JSON.parse(localStorage.getItem(storageKey)) || [];
 
     adicionarPedidoBtn.addEventListener("click", () => {
         modal.style.display = "block";
@@ -25,14 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
 
         const novoPedido = {
-            item: parseInt(document.getElementById("item").value),
+            item: document.getElementById("item").value,
             datainicial: formatarData(document.getElementById("datainicial").value),
             dataentrega: formatarData(document.getElementById("dataentrega").value),
             tamanho: parseInt(document.getElementById("tamanho").value),
             prioridade: parseInt(document.getElementById("prioridade").value) || 0,
         };
-        
+
         pedidos.push(novoPedido);
+        salvarPedidos();
         atualizarTabela();
         modal.style.display = "none";
         pedidoForm.reset();
@@ -41,6 +44,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function formatarData(dataISO) {
         const [ano, mes, dia] = dataISO.split("-");
         return `${dia}/${mes}/${ano}`;
+    }
+
+    function desformatarData(dataBR) {
+        const [dia, mes, ano] = dataBR.split("/");
+        return `${ano}-${mes}-${dia}`;
     }
 
     function atualizarTabela() {
@@ -58,16 +66,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function salvarPedidos() {
+        localStorage.setItem(storageKey, JSON.stringify(pedidos));
+    }
+
     ordenarSelect.addEventListener("change", () => {
         const criterio = ordenarSelect.value;
         if (criterio) {
             pedidos.sort((a, b) => {
                 if (criterio === "datainicial" || criterio === "dataentrega") {
-                    return new Date(a[criterio].split("/").reverse().join("-")) - new Date(b[criterio].split("/").reverse().join("-"));
+                    return new Date(desformatarData(a[criterio])) - new Date(desformatarData(b[criterio]));
                 }
                 return a[criterio] - b[criterio];
             });
             atualizarTabela();
         }
     });
+
+    atualizarTabela(); // carrega pedidos salvos
 });

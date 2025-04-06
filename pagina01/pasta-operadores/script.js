@@ -6,8 +6,8 @@ const form = document.getElementById("operadorForm");
 const tabela = document.getElementById("operadoresTable").querySelector("tbody");
 const selectOrdenar = document.getElementById("ordenarpor");
 
-// Lista de operadores
-let operadores = [];
+const storageKey = "operadores";
+let operadores = JSON.parse(localStorage.getItem(storageKey)) || [];
 
 // Abrir modal
 btnAdicionar.onclick = () => {
@@ -37,13 +37,13 @@ form.addEventListener("submit", (e) => {
 
     const novoOperador = { re, nome, turno, maquinas };
     operadores.push(novoOperador);
-
+    salvarLocal();
     form.reset();
     modal.style.display = "none";
     atualizarTabela();
 });
 
-// Atualiza a tabela com os dados atuais
+// Atualiza a tabela
 function atualizarTabela() {
     tabela.innerHTML = "";
     operadores.forEach((operador) => {
@@ -58,20 +58,25 @@ function atualizarTabela() {
     });
 }
 
+// Salvar no localStorage
+function salvarLocal() {
+    localStorage.setItem(storageKey, JSON.stringify(operadores));
+}
+
 // Ordenação
 selectOrdenar.addEventListener("change", () => {
     const criterio = selectOrdenar.value;
+    const campo = (criterio === 'r.e') ? 're' : criterio;
 
-    if (criterio) {
-        // Corrigir campo 'r.e' para 're'
-        const campo = (criterio === 'r.e') ? 're' : criterio;
-
+    if (campo) {
         operadores.sort((a, b) => {
             return a[campo].toLowerCase().localeCompare(b[campo].toLowerCase());
         });
-
         atualizarTabela();
     }
 });
 
-// Inicializa a tabela
+// Carregar dados ao iniciar
+atualizarTabela();
+
+
